@@ -28,21 +28,24 @@
 import wilddog from 'wilddog'
 
 const wildConfig = {
-  authDomain: "vue-books-list.wilddogio.com/books",
-  syncURL: "vue-books-list.wilddogio.com/books"
+  authDomain: "vue-books-list.wilddogio.com",
+  syncURL: "https://vue-books-list.wilddogio.com"
 }
-const wildApp = wilddog.initializeApp(wildConfig)
-const sync = wildApp.sync()
+wilddog.initializeApp(wildConfig)
+let ref = wilddog.sync().ref()
+let booksRef = ref.child('books')
 
 export default {
   name: 'app',
   data(){
     return {
       title:'Vue.js Wilddog BookList',
+      newBook:{
+      }
     }
   },
   wilddog:{
-    books:sync.ref('/books')
+    books : booksRef
   },
   methods:{
   },
