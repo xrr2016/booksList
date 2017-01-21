@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "vue": "^2.1.0",
-    "wilddog": "^2.4.4"
+    "wilddog": "^2.4.4",
+    "wildvue": "^1.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

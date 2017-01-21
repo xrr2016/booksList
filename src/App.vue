@@ -1,18 +1,54 @@
 <template>
   <div id="app" class="container-fluid">
-    <nav class="navbar sticky-top navbar-light bg-faded">
-      <a class="navbar-brand" href="/">
-        <img src="./assets/logo.png"  class="logo" alt="Vue.js">
-      </a>
-    </nav>
+      <h1 class="title">
+        <img class="logo" src="./assets/logo.png" alt="">
+        {{ title }}</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>书名</th>
+          <th>作者</th>
+          <th>简介</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="book of books">
+          <td>{{ book.name }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.subject }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
   </div>
 </template>
 
 <script>
+import wilddog from 'wilddog'
+
+const wildConfig = {
+  authDomain: "vue-books-list.wilddogio.com/books",
+  syncURL: "vue-books-list.wilddogio.com/books"
+}
+const wildApp = wilddog.initializeApp(wildConfig)
+const sync = wildApp.sync()
 
 export default {
   name: 'app',
+  data(){
+    return {
+      title:'Vue.js Wilddog BookList',
+    }
+  },
+  wilddog:{
+    books:sync.ref('/books')
+  },
+  methods:{
+  },
   components: {
+  },
+  mounted(){
   }
 }
 </script>
@@ -22,9 +58,13 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 60px;
   color: #2c3e50;
 }
 .logo{
-  height: 80px;
+  height: 40px;
+}
+.title{
+  text-align: center;
 }
 </style>
