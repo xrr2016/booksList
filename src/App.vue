@@ -1,7 +1,10 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    Hello
+  <div id="app" class="container-fluid">
+    <nav class="navbar sticky-top navbar-light bg-faded">
+      <a class="navbar-brand" href="/">
+        <img src="./assets/logo.png"  class="logo" alt="Vue.js">
+      </a>
+    </nav>
   </div>
 </template>
 
@@ -19,8 +22,9 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.logo{
+  height: 80px;
 }
 </style>
