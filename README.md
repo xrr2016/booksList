@@ -1,6 +1,8 @@
 # vue-book-list
 
-> Vue.js Firebase vue-firebase
+> Vue.js Wilddog
+
+[Demo](http://xiaoranran.site/booksList/)
 
 ## Build Setup
 
