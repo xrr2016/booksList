@@ -22,9 +22,7 @@
           <td>{{ book.author }}</td>
           <td class="w-50 p-2">{{ book.subject }}</td>
           <td>
-            <button @click="removeBook(book)" type="button" class="close" aria-label="Close" title="删除书籍">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <button @click="removeBook(book)" type="button" class="close" aria-label="Close" title="删除书籍"><span aria-hidden="true">&times;</span></button>
           </td>
         </tr>
       </tbody>
@@ -112,7 +110,16 @@ export default {
   color: #fff;
   background-color: rgba(0, 0, 0, .5);
 }
-
+.fade-enter-active {
+  transition: all .3s ease;
+}
+.fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-enter, .fade-leave-active {
+  transform: translateX(10px);
+  opacity: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
