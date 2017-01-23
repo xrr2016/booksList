@@ -2,7 +2,7 @@
 
 > Vue.js Wilddog
 
-[Demo](http://xiaoranran.site/booksList/)
+使用Wilddog实现数据同步
 
 ## Build Setup
 
