@@ -6,24 +6,41 @@ const imgs = [
   'http://pic1.win4000.com/wallpaper/a/594236f759b52.jpg'
 ]
 
-let index = 0
+let index = 0,
+  count = 0
+const imgsLen = imgs.length
 const picture = document.querySelector('.picture')
+const loading = document.querySelector('.loading')
+const progress = document.querySelector('.progress')
 picture.setAttribute('src', imgs[index])
 const btns = document.querySelectorAll('button.control-btn')
 
+const handleLoadImg = function(img, event) {
+  progress.innerHTML = Math.round((count + 1) / imgs.length * 100) + '%'
+  if (count >= imgsLen - 1) {
+    console.log('loaded all img')
+    loading.classList.add('hide')
+    document.title = 1 + '/' + imgs.length
+  }
+  count++
+}
 const handleButtonClick = function(event) {
   const target = event.target
   if (target.dataset.control === 'prev') {
-    console.log('prev')
     index = Math.max(0, --index)
   } else {
-    console.log('next')
     index = Math.min(imgs.length - 1, ++index)
   }
   document.title = index + 1 + '/' + imgs.length
   picture.setAttribute('src', imgs[index])
 }
 
+imgs.forEach(function(imgSrc, index, imgs) {
+  const img = new Image()
+  img.addEventListener('load', handleLoadImg)
+  img.addEventListener('error', handleLoadImg)
+  img.src = imgSrc
+})
 btns.forEach(function(btn) {
   btn.addEventListener('click', handleButtonClick)
 })
